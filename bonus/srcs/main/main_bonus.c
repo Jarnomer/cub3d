@@ -30,10 +30,11 @@ static void	load_scene(t_cubed *game)
 	safe_draw(game->asset[IMG_MM], 0, 0, game);
 	safe_draw(game->asset[IMG_FV], 0, 0, game);
 	safe_draw(game->asset[IMG_PL], MAPCENTER, MAPCENTER, game);
-	//safe_draw(game->asset[IMG_HD], 0, SCREEN_HEIGHT - HUD_HEIGHT, game);
 	draw_weapon(game);
 	safe_draw(game->asset[IMG_HD], 0, SCREEN_HEIGHT - HUD_HEIGHT, game);
 	safe_draw(game->asset[IMG_FX], 0, SCREEN_HEIGHT - HUD_HEIGHT, game);
+	mlx_put_string(game->mlx, "HEALTH", 320, SCREEN_HEIGHT - 54);
+	mlx_put_string(game->mlx, "AMMO", 520, SCREEN_HEIGHT - 54);
 	safe_mutex(0, MTX_INIT, game);
 	safe_thread(0, THD_CREATE, game);
 }
