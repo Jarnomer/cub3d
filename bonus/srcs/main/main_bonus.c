@@ -18,7 +18,8 @@ static void	run_game(t_cubed *game)
 	mlx_key_hook(game->mlx, hook_action, game);
 	mlx_loop_hook(game->mlx, hook_movement, game);
 	mlx_loop_hook(game->mlx, hook_mouse, game);
-	mlx_loop_hook(game->mlx, hook_animation, game);
+	mlx_loop_hook(game->mlx, hook_weapon, game);
+	init_player_info(game);
 	mlx_loop(game->mlx);
 }
 
@@ -29,14 +30,14 @@ static void	load_scene(t_cubed *game)
 	safe_draw(game->asset[IMG_OL], 0, 0, game);
 	safe_draw(game->asset[IMG_MM], 0, 0, game);
 	safe_draw(game->asset[IMG_FV], 0, 0, game);
+	draw_weapon_frames(game->sprite[SPRT_WPN], game);
 	safe_draw(game->asset[IMG_PL], MAPCENTER, MAPCENTER, game);
-	draw_weapon(game);
 	safe_draw(game->asset[IMG_HD], 0, SCREEN_HEIGHT - HUD_HEIGHT, game);
-	safe_draw(game->asset[IMG_FX], 0, SCREEN_HEIGHT - HUD_HEIGHT, game);
-	mlx_put_string(game->mlx, "HEALTH", 320, SCREEN_HEIGHT - 54);
-	mlx_put_string(game->mlx, "AMMO", 520, SCREEN_HEIGHT - 54);
+	safe_draw(game->asset[IMG_FX], 0, 0, game);
 	safe_mutex(0, MTX_INIT, game);
 	safe_thread(0, THD_CREATE, game);
+	set_status(&game->status[STAT_LOADED],
+		true, &game->mtx[MTX_LOADED], game);
 }
 
 static void	parse_file(t_cubed *game)
@@ -60,9 +61,11 @@ static void	init_game(t_cubed *game, char *file)
 		error_exit(ERR_MLX, MSG_MLX, game);
 	mlx_get_mouse_pos(game->mlx, &game->mouse[X], &game->mouse[Y]);
 	mlx_set_cursor_mode(game->mlx, MLX_MOUSE_DISABLED);
-	load_assets(game);
-	load_weapon(game);
-	init_animation(game);
+	init_sprite(SPRT_WPN, FRAMES_WEAPON, FRAME_DELAY, game);
+	init_sprite(SPRT_GATE, FRAMES_PORTAL, FRAME_DELAY, game);
+	load_weapon_frames(game->sprite[SPRT_WPN], game);
+	load_portal_frames(game->sprite[SPRT_GATE], game);
+	load_custom_assets(game);
 }
 
 int	main(int argc, char **argv)

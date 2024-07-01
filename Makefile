@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vsavolai <vsavolai@student.42.fr>          +#+  +:+       +#+         #
+#    By: jmertane <jmertane@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/04 17:42:13 by jmertane          #+#    #+#              #
-#    Updated: 2024/06/28 14:04:56 by vsavolai         ###   ########.fr        #
+#    Updated: 2024/06/30 11:47:21 by jmertane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,59 +82,58 @@ VLGFLAGS	:=	--leak-check=full \
 # **************************************************************************** #
 
 MODULES		:=	main \
-				parse \
+				parser \
 				hook \
 				render \
 				utils
 
 SOURCES 	:= 	main \
-				infile \
-				element \
-				mapinfo \
-				checker \
+				parse_infile \
+				parse_element \
+				parse_mapinfo \
+				parse_checker \
 				parse_utils \
-				move \
-				rotate \
-				walls \
-				rays \
-				pixel \
-				error \
-				load \
+				hook_move \
+				hook_rotate \
+				draw_walls \
+				draw_calc_ray \
+				draw_pixel_utils \
 				free_exit \
 				free_str \
 				safe_mlx \
-				safe_str
+				safe_str \
+				load_scene_asset \
+				error_handler
 
 BONUS_MODS	:=	thread \
-				thread/getset \
-				render/draw \
-				render/calc \
-				render/anim \
-				render/utils \
-				utils/safe \
-				utils/load \
-				utils/free \
+				gameplay
 
 BONUS_SRCS 	:= 	thread \
 				mutex \
 				getset_map \
 				getset_cam \
+				getset_plr \
+				getset_frm \
 				getset_stat \
 				render_hud \
 				render_world \
-				action \
-				mouse \
-				floor \
-				sprite \
-				animation \
-				minimap \
-				fov \
-				wall_calc \
-				sprite_calc \
-				map_utils \
-				asset \
-				color \
-				hud
+				hook_action \
+				hook_mouse \
+				draw_floor \
+				draw_sprite \
+				anim_weapon \
+				anim_utils \
+				draw_minimap \
+				draw_fov \
+				draw_hud_fx \
+				draw_calc_wall \
+				draw_calc_sprite \
+				draw_color_utils \
+				draw_map_utils \
+				free_thread \
+				free_asset \
+				load_custom_asset \
+				gameplay_player
 
 # **************************************************************************** #
 #    GOALS
@@ -172,7 +171,7 @@ DEPENDDIR	:=	$(addprefix $(DEPSDIR)/, $(MODULES))
 
 SRCS	:=	$(foreach source, $(SOURCES), $(shell find $(SOURCEDIR) -name $(source)))
 OBJS	:=	$(patsubst $(ROOTDIR)/$(SRCSDIR)/%.c, $(OBJSDIR)/%.o, $(SRCS))
-DEPS	:=	$(patsubst $(ROOTDIR)/$(SRCSDIR)/%.c, $(DEPSDIR)/%.d, $(SRCS))
+DEPS	:=	$(patsubst $(OBJSDIR)/%.o, $(DEPSDIR)/%.d, $(OBJS))
 
 INCS	:=	$(foreach header, $(ROOTDIR)/$(INCSDIR), -I $(header))
 INCS	+=	$(foreach header, $(LIBFTDIR)/$(INCSDIR), -I $(header))
