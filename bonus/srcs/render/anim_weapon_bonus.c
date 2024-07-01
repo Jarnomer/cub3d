@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   weapon_bonus.c                                     :+:      :+:    :+:   */
+/*   anim_weapon_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmertane <jmertane@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vsavolai <vsavolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 15:06:35 by vsavolai          #+#    #+#             */
-/*   Updated: 2024/06/30 11:49:37 by jmertane         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:14:42 by vsavolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	draw_weapon_frames(t_sprite *spr, t_cubed *game)
 
 	i = IMG_W15;
 	offset[X] = SCREEN_WIDTH - spr->frame[IMG_BASE]->width;
-	offset[Y] = SCREEN_HEIGHT - spr->frame[IMG_BASE]->height;
+	offset[Y] = SCREEN_HEIGHT + 40 - spr->frame[IMG_BASE]->height;
 	while (i > IMG_W1)
 	{
 		safe_draw(spr->frame[i], offset[X], offset[Y], game);

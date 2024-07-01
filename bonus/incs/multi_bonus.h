@@ -6,7 +6,7 @@
 /*   By: vsavolai <vsavolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 09:32:28 by jmertane          #+#    #+#             */
-/*   Updated: 2024/06/28 12:35:32 by vsavolai         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:13:46 by vsavolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <pthread.h>
 
-# define GAME_THREADS 6
+# define GAME_THREADS 5
 # define GAME_MUTEXES 8
 # define GAME_STATS 2
 
@@ -28,7 +28,6 @@ typedef enum e_thread
 	THD_OL,
 	THD_MM,
 	THD_FV,
-	THD_HD
 }	t_thread;
 
 typedef enum e_mutex

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asset_bonus.c                                      :+:      :+:    :+:   */
+/*   load_custom_asset_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vsavolai <vsavolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/21 09:38:57 by jmertane          #+#    #+#             */
-/*   Updated: 2024/06/28 13:01:37 by vsavolai         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:18:23 by vsavolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,10 @@ void	load_custom_assets(t_cubed *game)
 	game->asset[IMG_PL] = safe_img(0, 0, safe_tex(TEX_PLAYER, 0, game), game);
 	game->asset[IMG_HL] = safe_img(0, 0, safe_tex(TEX_HEALTH, 0, game), game);
 	game->asset[IMG_AM] = safe_img(0, 0, safe_tex(TEX_AMMO, 0, game), game);
-	game->asset[IMG_HD] = safe_img(SCREEN_WIDTH, HUD_HEIGHT, NULL, game);
 	set_image_color(game->asset[IMG_BG], COLOR_BLACK);
 	set_image_color(game->asset[IMG_FG], COLOR_BLACK);
 	set_image_color(game->asset[IMG_OL], TRANSPARENT);
 	set_image_color(game->asset[IMG_FX], COLOR_PICKUP);
-	set_image_color(game->asset[IMG_HD], COLOR_HUD);
 	game->asset[IMG_FX]->enabled = false;
 }
 

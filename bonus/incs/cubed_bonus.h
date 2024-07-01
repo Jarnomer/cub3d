@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cubed_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmertane <jmertane@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vsavolai <vsavolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 19:25:26 by jmertane          #+#    #+#             */
-/*   Updated: 2024/06/30 11:54:45 by jmertane         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:13:30 by vsavolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@
 
 # define CELLSIZE 256
 # define BUMP_BUFFER (CELLSIZE / 2)
-# define ANGLE_MODIFIER 0.00033f
-# define MOVE_MODIFIER 0.1155f
+# define ANGLE_MODIFIER 0.00015f
+# define MOVE_MODIFIER 0.06f
 
 # define STEP_ANGLE (CELLSIZE * ANGLE_MODIFIER)
 # define STEP_MOVEMENT (CELLSIZE * MOVE_MODIFIER)
@@ -250,7 +250,6 @@ void	*render_floor(void *param);
 void	*render_sprites(void *param);
 void	*render_minimap(void *param);
 void	*render_fov(void *param);
-void	*render_hud(void *param);
 
 //		Draw
 void	draw_walls(t_camera *cam, float angle, t_cubed *game);
@@ -258,7 +257,6 @@ void	draw_floor(t_camera *cam, float angle, t_cubed *game);
 void	draw_sprites(t_camera *cam, t_cubed *game);
 void	draw_minimap(int cam_x, int cam_y, t_cubed *game);
 void	draw_fov(t_camera *cam, float angle, t_cubed *game);
-void	draw_hud(t_cubed *game);
 void	draw_screen_fx(int32_t course, t_cubed *game);
 
 //		Weapon

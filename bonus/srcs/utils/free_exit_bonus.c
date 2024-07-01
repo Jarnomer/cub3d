@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_exit_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmertane <jmertane@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vsavolai <vsavolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 21:01:07 by jmertane          #+#    #+#             */
-/*   Updated: 2024/06/30 11:49:11 by jmertane         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:17:49 by vsavolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ static void	destruct_plr(t_player *plr, t_cubed *game)
 		free_single(&plr->ammo);
 	if (plr->health != NULL)
 		free_single(&plr->health);
+	free(plr);
+	plr = NULL;
+	return ;
 	if (plr->img[A] != NULL)
 		mlx_delete_image(game->mlx, plr->img[A]);
 	if (plr->img[H] != NULL)
 		mlx_delete_image(game->mlx, plr->img[H]);
-	free(plr);
-	plr = NULL;
 }
 
 static void	stop_mlx(t_cubed *game)

@@ -6,14 +6,14 @@
 /*   By: vsavolai <vsavolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 09:25:46 by jmertane          #+#    #+#             */
-/*   Updated: 2024/06/28 12:19:52 by vsavolai         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:13:02 by vsavolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASSET_BONUS_H
 # define ASSET_BONUS_H
 
-# define GAME_ASSETS 17
+# define GAME_ASSETS 16
 # define GAME_COLORS 2
 # define GAME_SPRITES 2
 
@@ -70,7 +70,6 @@ typedef enum e_image
 	IMG_PL,
 	IMG_AM,
 	IMG_HL,
-	IMG_HD,
 	IMG_FX,
 	IMG_BASE = 0
 }	t_image;
