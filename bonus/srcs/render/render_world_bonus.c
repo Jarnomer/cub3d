@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_bonus.c                                     :+:      :+:    :+:   */
+/*   render_world_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmertane <jmertane@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vsavolai <vsavolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 16:18:21 by jmertane          #+#    #+#             */
-/*   Updated: 2024/06/26 11:31:35 by jmertane         ###   ########.fr       */
+/*   Updated: 2024/07/01 17:51:41 by vsavolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	*render_sprites(void *param)
 	{
 		get_camera(&cam, game);
 		draw_sprites(&cam, game);
-		wait_frame(game, FRAME_LIMIT);
 	}
 	return (NULL);
 }
@@ -37,7 +36,6 @@ void	*render_floor(void *param)
 	{
 		get_camera(&cam, game);
 		draw_floor(&cam, cam.a, game);
-		wait_frame(game, FRAME_LIMIT);
 	}
 	return (NULL);
 }
@@ -52,7 +50,6 @@ void	*render_walls(void *param)
 	{
 		get_camera(&cam, game);
 		draw_walls(&cam, cam.a, game);
-		wait_frame(game, FRAME_LIMIT);
 	}
 	return (NULL);
 }
