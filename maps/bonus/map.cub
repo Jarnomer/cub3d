@@ -3,7 +3,7 @@ SO ./textures/bonus/wall_south.png
 WE ./textures/bonus/wall_west.png
 EA ./textures/bonus/wall_east.png
 
-F 220,100,0
+F 220,200,50
 C 25,125,25
 
         111111111111111111111111111
